@@ -1,0 +1,10 @@
+<div class="container">
+  <input [(ngModel)]="userFilterText" placeholder="Filter Users">
+</div>
+<!-- Calls the getter on the service -->
+<div class="container" [hidden]="!jsonService.selectedUser">
+  <app-user [user]="jsonService.selectedUser" [showLarge]="true"></app-user>
+</div>
+<div class="container">
+  <app-user *ngFor="let user of (userList$ | async)" [(user)]="user" (userSelected)="selectUser(user)"></app-user>
+</div>

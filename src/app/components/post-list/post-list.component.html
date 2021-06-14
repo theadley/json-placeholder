@@ -1,0 +1,19 @@
+<div class="container">
+  <input [(ngModel)]="postFilterText" placeholder="Filter Posts">
+  <div class="links">
+    <a [routerLink]="'/users'">USERS</a>
+    <a [routerLink]="'/posts'" *ngIf="selectedUserId && selectedUserId > 0">ALL POSTS</a>
+  </div>
+</div>
+<div class="container">
+  <div
+    *ngFor="let post of postList$ | async"
+    class="post"
+    [class.selected]="selectedPostId === post.id"
+    (click)="selectPost(post.id)">
+
+    <span class="title">{{post.title}}</span>
+    <span class="body">{{post.body}}{{post.body}}{{post.body}}{{post.body}}{{post.body}}{{post.body}}{{post.body}}</span>
+
+  </div>
+</div>

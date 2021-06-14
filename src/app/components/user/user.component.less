@@ -1,0 +1,59 @@
+.user-card {
+  border-radius: 8px;
+  min-height: 10em;
+  min-width: 10em;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  img {
+    border-radius: 8px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      font-size: 1.2em;
+      margin-top: 0.5em;
+    }
+
+    .email {
+      margin-top: 0.2em;
+      color: #0053ff;
+      cursor: pointer;
+    }
+
+    .phone {
+      font-size: 0.8em;
+      margin-top: 0.2em;
+    }
+
+    .links {
+      display: flex;
+      font-size: 0.6em;
+      margin-top: 0.4em;
+
+      a {
+        text-decoration: none;
+        color: #0053ff;
+        margin-right: 1em;
+      }
+    }
+  }
+}
+
+.show-large {
+  flex-direction: row;
+
+  img {
+    margin-right: 1em;
+  }
+}
