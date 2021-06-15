@@ -9,6 +9,8 @@ import { AlbumComponent } from './components/album/album.component';
 import {FormsModule} from '@angular/forms';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { UserComponent } from './components/user/user.component';
+import { FilterUsersPipe } from './pipes/filter-users.pipe';
+import { FilterPostsPipe } from './pipes/filter-posts.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { UserComponent } from './components/user/user.component';
     UserListComponent,
     AlbumComponent,
     PostListComponent,
-    UserComponent
+    UserComponent,
+    FilterUsersPipe,
+    FilterPostsPipe
   ],
   imports: [
     BrowserModule,

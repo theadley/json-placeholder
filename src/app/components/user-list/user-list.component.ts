@@ -14,6 +14,8 @@ export class UserListComponent implements OnInit {
 
   userFilterText = '';
 
+  isTheSelectedUserLarge = true;
+
   constructor(public jsonService: JsonPlaceholderService) {
     this.userList$ = jsonService.users$;
   }

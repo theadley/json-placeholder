@@ -3,7 +3,7 @@
   <div class="details">
     <span class="name">{{user.name}} <ng-container *ngIf="showLarge">({{user.username}})</ng-container></span>
     <!-- TODO: Lower case email -->
-    <span class="email">{{user.email}}</span>
+    <span class="email">{{user.email | lowercase}}</span>
     <span class="phone">{{user.phone}}</span>
     <span class="phone">{{user.website}}</span>
     <ng-container *ngIf="showLarge">
@@ -16,5 +16,7 @@
       <a [routerLink]="'/posts/' + user.id">POSTS</a>
       <a [routerLink]="'/albums/' + user.id">ALBUMS</a>
     </div>
+
+    <button (click)="toggleSize($event)">{{showLarge ? 'Small' : 'Large'}}</button>
   </div>
 </div>

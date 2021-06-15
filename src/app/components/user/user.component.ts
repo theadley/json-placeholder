@@ -10,6 +10,7 @@ export class UserComponent implements OnInit {
 
   @Input() user: User = null;
   @Input() showLarge = false;
+  @Output() showLargeChange = new EventEmitter<boolean>();
   // @Output() userChange = new EventEmitter<User>();
   @Output() userSelected = new EventEmitter<User>();
 
@@ -19,6 +20,12 @@ export class UserComponent implements OnInit {
 
   selected() {
     this.userSelected.emit(this.user);
+  }
+
+  toggleSize(event) {
+    event.stopPropagation();
+    this.showLarge = !this.showLarge;
+    this.showLargeChange.emit(this.showLarge);
   }
 
 }

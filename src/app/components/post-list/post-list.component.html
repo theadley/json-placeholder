@@ -5,9 +5,13 @@
     <a [routerLink]="'/posts'" *ngIf="selectedUserId && selectedUserId > 0">ALL POSTS</a>
   </div>
 </div>
+<!-- Calls the getter on the service -->
+<div class="container" *ngIf="jsonService.selectedUser && selectedUserId">
+  <app-user [user]="jsonService.selectedUser" [showLarge]="true"></app-user>
+</div>
 <div class="container">
   <div
-    *ngFor="let post of postList$ | async"
+    *ngFor="let post of postList$ | async | filterPosts: postFilterText"
     class="post"
     [class.selected]="selectedPostId === post.id"
     (click)="selectPost(post.id)">

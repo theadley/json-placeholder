@@ -3,8 +3,12 @@
 </div>
 <!-- Calls the getter on the service -->
 <div class="container" [hidden]="!jsonService.selectedUser">
-  <app-user [user]="jsonService.selectedUser" [showLarge]="true"></app-user>
+  <app-user [user]="jsonService.selectedUser" [(showLarge)]="isTheSelectedUserLarge"></app-user>
 </div>
 <div class="container">
-  <app-user *ngFor="let userListEntry of (userList$ | async)" [user]="userListEntry" (userSelected)="selectUser(userListEntry)"></app-user>
+  <app-user
+    *ngFor="let userListEntry of (userList$ | async) | filterUsers: userFilterText"
+    [user]="userListEntry"
+    (userSelected)="selectUser(userListEntry)">
+  </app-user>
 </div>

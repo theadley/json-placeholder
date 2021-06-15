@@ -23,10 +23,10 @@ export class JsonPlaceholderService {
       // Response Guard
       if (!response || response === []) {
         this.users$.next([]);
+      } else {
+        // Here we can be certain that response is a User[]
+        this.users$.next(response);
       }
-
-      // Here we can be certain that response is a User[]
-      this.users$.next(response);
     });
   }
 

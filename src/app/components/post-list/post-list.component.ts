@@ -18,7 +18,7 @@ export class PostListComponent implements OnInit {
   selectedUserId: number;
 
   constructor(
-    private jsonService: JsonPlaceholderService,
+    public jsonService: JsonPlaceholderService,
     private route: ActivatedRoute
   ) { }
 
