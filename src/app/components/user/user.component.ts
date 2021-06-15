@@ -10,13 +10,12 @@ export class UserComponent implements OnInit {
 
   @Input() user: User = null;
   @Input() showLarge = false;
-  @Output() userChange = new EventEmitter<User>();
+  // @Output() userChange = new EventEmitter<User>();
   @Output() userSelected = new EventEmitter<User>();
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   selected() {
     this.userSelected.emit(this.user);

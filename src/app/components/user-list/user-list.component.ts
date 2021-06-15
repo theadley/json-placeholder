@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit {
 
   userFilterText = '';
 
-  constructor(private jsonService: JsonPlaceholderService) {
+  constructor(public jsonService: JsonPlaceholderService) {
     this.userList$ = jsonService.users$;
   }
 
