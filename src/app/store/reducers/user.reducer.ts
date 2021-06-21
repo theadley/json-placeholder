@@ -25,7 +25,7 @@ export const reducer = createReducer(
   on(UserActions.selectUser, (state, {user}) => (
     {
       ...state,
-      selectedUser: state.selectedUser.id === user.id ? null : user
+      selectedUser: state.selectedUser && state.selectedUser.id === user.id ? null : user
     }
   )),
 
