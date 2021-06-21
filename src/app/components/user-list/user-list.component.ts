@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {User} from '../../models/user';
-import {JsonPlaceholderService} from '../../services/json-placeholder.service';
+import {select, Store} from '@ngrx/store';
+import {UserState} from '../../store/reducers/user.reducer';
+import {getUsers, selectUser} from '../../store/actions/user.actions';
+import {selectIsLoading, selectSelectedUser, selectUsers} from '../../store/selectors/user.selectors';
 
 @Component({
   selector: 'app-user-list',
@@ -11,23 +14,25 @@ import {JsonPlaceholderService} from '../../services/json-placeholder.service';
 export class UserListComponent implements OnInit {
 
   userList$: Observable<User[]>;
+  selectedUser$: Observable<User>;
+  isLoading$: Observable<boolean>;
 
   userFilterText = '';
 
   isTheSelectedUserLarge = true;
 
-  constructor(public jsonService: JsonPlaceholderService) {
-    this.userList$ = jsonService.users$;
-  }
+  constructor(private userStore: Store<UserState>) {}
 
   ngOnInit() {
-    // Get the users
-    this.jsonService.getUsers();
+    this.userStore.dispatch(getUsers());
+    this.userList$ = this.userStore.pipe(select(selectUsers));
+    this.selectedUser$ = this.userStore.pipe(select(selectSelectedUser));
+    this.isLoading$ = this.userStore.pipe(select(selectIsLoading));
   }
 
   selectUser(user: User) {
     // Calls the setter function
-    this.jsonService.selectedUser = user;
+    this.userStore.dispatch(selectUser({user}));
   }
 
 }

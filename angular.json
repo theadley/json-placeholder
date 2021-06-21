@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "json-placeholder"
+    }
+  },
+  "defaultProject": "json-placeholder",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

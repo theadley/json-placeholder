@@ -2,10 +2,11 @@
   <input [(ngModel)]="userFilterText" placeholder="Filter Users">
 </div>
 <!-- Calls the getter on the service -->
-<div class="container" [hidden]="!jsonService.selectedUser">
-  <app-user [user]="jsonService.selectedUser" [(showLarge)]="isTheSelectedUserLarge"></app-user>
+<div class="container" [hidden]="!(selectedUser$ | async)">
+  <app-user [user]="(selectedUser$ | async)" [(showLarge)]="isTheSelectedUserLarge"></app-user>
 </div>
 <div class="container">
+  <p *ngIf="isLoading$ | async">Loading...</p>
   <app-user
     *ngFor="let userListEntry of (userList$ | async) | filterUsers: userFilterText"
     [user]="userListEntry"

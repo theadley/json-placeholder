@@ -3,6 +3,10 @@ import {JsonPlaceholderService} from '../../services/json-placeholder.service';
 import {Observable} from 'rxjs';
 import {Post} from '../../models/post';
 import {ActivatedRoute} from '@angular/router';
+import {select, Store} from '@ngrx/store';
+import {UserState} from '../../store/reducers/user.reducer';
+import {User} from '../../models/user';
+import {selectSelectedUser} from '../../store/selectors/user.selectors';
 
 @Component({
   selector: 'app-post-list',
@@ -16,16 +20,19 @@ export class PostListComponent implements OnInit {
   postFilterText = '';
   selectedPostId: number;
   selectedUserId: number;
+  selectedUser$: Observable<User>;
 
   constructor(
     public jsonService: JsonPlaceholderService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userStore: Store<UserState>
   ) { }
 
   ngOnInit() {
     const paramUserId = this.route.snapshot.paramMap.get('userId');
     this.selectedUserId = paramUserId ? Number(paramUserId) : null;
     this.postList$ = this.jsonService.getPosts(this.selectedUserId);
+    this.selectedUser$ = this.userStore.pipe(select(selectSelectedUser));
   }
 
   selectPost(id: number) {

@@ -6,8 +6,8 @@
   </div>
 </div>
 <!-- Calls the getter on the service -->
-<div class="container" *ngIf="jsonService.selectedUser && selectedUserId">
-  <app-user [user]="jsonService.selectedUser" [showLarge]="true"></app-user>
+<div class="container" *ngIf="(selectedUser$ | async) && selectedUserId">
+  <app-user [user]="selectedUser$ | async" [showLarge]="true"></app-user>
 </div>
 <div class="container">
   <div
