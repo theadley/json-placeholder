@@ -20,4 +20,5 @@ export interface User {
     catchPhrase: string;
     bs: string;
   };
+  isSelected?: boolean;
 }

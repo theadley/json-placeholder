@@ -18,5 +18,5 @@ export const selectUsers = createSelector(
 
 export const selectSelectedUser = createSelector(
   selectUserState,
-  (state: UserState) => state.selectedUser
+  (state: UserState) => state.users.find(u => u.isSelected)
 );
